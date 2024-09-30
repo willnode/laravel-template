@@ -63,6 +63,10 @@ return [
         // Features::api(),
         // Features::teams(['invitations' => true]),
         Features::accountDeletion(),
+
+        // these are added by laravel template
+        'blog', // demonstrating CRUD / markdown editor
+        'cart', // demonstrating payments / invoicing / export
     ],
 
     /*
