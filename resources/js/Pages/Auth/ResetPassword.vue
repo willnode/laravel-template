@@ -1,11 +1,6 @@
 <script setup>
 import { Head, useForm } from '@inertiajs/vue3';
-import AuthenticationCard from '@/Components/AuthenticationCard.vue';
-import AuthenticationCardLogo from '@/Components/AuthenticationCardLogo.vue';
-import InputError from '@/Components/InputError.vue';
-import InputLabel from '@/Components/InputLabel.vue';
-import PrimaryButton from '@/Components/PrimaryButton.vue';
-import TextInput from '@/Components/TextInput.vue';
+import ApplicationMark from '@/Components/ApplicationMark.vue';
 
 const props = defineProps({
     email: String,
@@ -29,57 +24,73 @@ const submit = () => {
 <template>
     <Head title="Reset Password" />
 
-    <AuthenticationCard>
-        <template #logo>
-            <AuthenticationCardLogo />
-        </template>
+    <div class="min-h-screen flex flex-col justify-center items-center bg-base-200">
+        <div class="card w-full max-w-sm shadow-lg bg-base-100">
+            <div class="card-body">
+                
+                <div class="w-16">
+                    <ApplicationMark />
+                </div>
 
-        <form @submit.prevent="submit">
-            <div>
-                <InputLabel for="email" value="Email" />
-                <TextInput
-                    id="email"
-                    v-model="form.email"
-                    type="email"
-                    class="mt-1 block w-full"
-                    required
-                    autofocus
-                    autocomplete="username"
-                />
-                <InputError class="mt-2" :message="form.errors.email" />
-            </div>
+                <form @submit.prevent="submit">
+                    <div>
+                        <label for="email" class="label">
+                            <span class="label-text">Email</span>
+                        </label>
+                        <input
+                            id="email"
+                            v-model="form.email"
+                            type="email"
+                            class="input input-bordered w-full"
+                            required
+                            autofocus
+                            autocomplete="username"
+                        />
+                        <p v-if="form.errors.email" class="text-error text-sm mt-1">{{ form.errors.email }}</p>
+                    </div>
 
-            <div class="mt-4">
-                <InputLabel for="password" value="Password" />
-                <TextInput
-                    id="password"
-                    v-model="form.password"
-                    type="password"
-                    class="mt-1 block w-full"
-                    required
-                    autocomplete="new-password"
-                />
-                <InputError class="mt-2" :message="form.errors.password" />
-            </div>
+                    <div class="mt-4">
+                        <label for="password" class="label">
+                            <span class="label-text">Password</span>
+                        </label>
+                        <input
+                            id="password"
+                            v-model="form.password"
+                            type="password"
+                            class="input input-bordered w-full"
+                            required
+                            autocomplete="new-password"
+                        />
+                        <p v-if="form.errors.password" class="text-error text-sm mt-1">{{ form.errors.password }}</p>
+                    </div>
 
-            <div class="mt-4">
-                <InputLabel for="password_confirmation" value="Confirm Password" />
-                <TextInput
-                    id="password_confirmation"
-                    v-model="form.password_confirmation"
-                    type="password"
-                    class="mt-1 block w-full"
-                    required
-                    autocomplete="new-password"
-                />
-                <InputError class="mt-2" :message="form.errors.password_confirmation" />
-            </div>
+                    <div class="mt-4">
+                        <label for="password_confirmation" class="label">
+                            <span class="label-text">Confirm Password</span>
+                        </label>
+                        <input
+                            id="password_confirmation"
+                            v-model="form.password_confirmation"
+                            type="password"
+                            class="input input-bordered w-full"
+                            required
+                            autocomplete="new-password"
+                        />
+                        <p v-if="form.errors.password_confirmation" class="text-error text-sm mt-1">{{ form.errors.password_confirmation }}</p>
+                    </div>
 
-            <div class="flex items-center justify-end mt-4">
-                <PrimaryButton :class="{ 'opacity-25': form.processing }" :disabled="form.processing">
-                    Reset Password
-                </PrimaryButton>
+                    <div class="mt-6">
+                        <button
+                            type="submit"
+                            class="btn btn-primary w-full"
+                            :class="{ 'loading': form.processing }"
+                            :disabled="form.processing"
+                        >
+                            Reset Password
+                        </button>
+                    </div>
+                </form>
             </div>
-        </form>
-    </AuthenticationCard>
+        </div>
+    </div>
 </template>
