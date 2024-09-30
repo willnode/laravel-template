@@ -25,7 +25,7 @@ const submit = () => {
     <div class="min-h-screen flex flex-col justify-center items-center bg-base-200">
         <div class="card w-full max-w-sm shadow-lg bg-base-100">
             <div class="card-body">
-                <div class="w-16">
+                <div class="w-16 mx-auto">
                     <ApplicationMark />
                 </div>
 
