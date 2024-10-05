@@ -4,8 +4,6 @@ import ActionMessage from '@/Components/ActionMessage.vue';
 import FormSection from '@/Components/FormSection.vue';
 import InputError from '@/Components/InputError.vue';
 import InputLabel from '@/Components/InputLabel.vue';
-import PrimaryButton from '@/Components/PrimaryButton.vue';
-import TextInput from '@/Components/TextInput.vue';
 
 const props = defineProps({
     team: Object,
@@ -55,11 +53,11 @@ const updateTeamName = () => {
             <div class="col-span-6 sm:col-span-4">
                 <InputLabel for="name" value="Team Name" />
 
-                <TextInput
+                <input
                     id="name"
                     v-model="form.name"
                     type="text"
-                    class="mt-1 block w-full"
+                    class="input input-bordered mt-1 block w-full"
                     :disabled="! permissions.canUpdateTeam"
                 />
 
@@ -72,9 +70,9 @@ const updateTeamName = () => {
                 Saved.
             </ActionMessage>
 
-            <PrimaryButton :class="{ 'opacity-25': form.processing }" :disabled="form.processing">
+            <button class="btn btn-primary" :class="{ 'opacity-25': form.processing }" :disabled="form.processing">
                 Save
-            </PrimaryButton>
+            </button>
         </template>
     </FormSection>
 </template>

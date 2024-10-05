@@ -4,15 +4,11 @@ import { router, useForm, usePage } from '@inertiajs/vue3';
 import ActionMessage from '@/Components/ActionMessage.vue';
 import ActionSection from '@/Components/ActionSection.vue';
 import ConfirmationModal from '@/Components/ConfirmationModal.vue';
-import DangerButton from '@/Components/DangerButton.vue';
 import DialogModal from '@/Components/DialogModal.vue';
 import FormSection from '@/Components/FormSection.vue';
 import InputError from '@/Components/InputError.vue';
 import InputLabel from '@/Components/InputLabel.vue';
-import PrimaryButton from '@/Components/PrimaryButton.vue';
-import SecondaryButton from '@/Components/SecondaryButton.vue';
 import SectionBorder from '@/Components/SectionBorder.vue';
-import TextInput from '@/Components/TextInput.vue';
 
 const props = defineProps({
     team: Object,
@@ -117,11 +113,11 @@ const displayableRole = (role) => {
                     <!-- Member Email -->
                     <div class="col-span-6 sm:col-span-4">
                         <InputLabel for="email" value="Email" />
-                        <TextInput
+                        <input
                             id="email"
                             v-model="addTeamMemberForm.email"
                             type="email"
-                            class="mt-1 block w-full"
+                            class="input input-bordered mt-1 block w-full"
                         />
                         <InputError :message="addTeamMemberForm.errors.email" class="mt-2" />
                     </div>
@@ -167,9 +163,9 @@ const displayableRole = (role) => {
                         Added.
                     </ActionMessage>
 
-                    <PrimaryButton :class="{ 'opacity-25': addTeamMemberForm.processing }" :disabled="addTeamMemberForm.processing">
+                    <button class="btn btn-primary" :class="{ 'opacity-25': addTeamMemberForm.processing }" :disabled="addTeamMemberForm.processing">
                         Add
-                    </PrimaryButton>
+                    </button>
                 </template>
             </FormSection>
         </div>
@@ -313,18 +309,18 @@ const displayableRole = (role) => {
             </template>
 
             <template #footer>
-                <SecondaryButton @click="currentlyManagingRole = false">
+                <button class="btn btn-secondary" @click="currentlyManagingRole = false">
                     Cancel
-                </SecondaryButton>
+                </button>
 
-                <PrimaryButton
-                    class="ms-3"
+                <button
+                    class="btn btn-primary ms-3"
                     :class="{ 'opacity-25': updateRoleForm.processing }"
                     :disabled="updateRoleForm.processing"
                     @click="updateRole"
                 >
                     Save
-                </PrimaryButton>
+                </button>
             </template>
         </DialogModal>
 
@@ -339,18 +335,17 @@ const displayableRole = (role) => {
             </template>
 
             <template #footer>
-                <SecondaryButton @click="confirmingLeavingTeam = false">
+                <button class="btn btn-secondary" @click="confirmingLeavingTeam = false">
                     Cancel
-                </SecondaryButton>
+                </button>
 
-                <DangerButton
-                    class="ms-3"
+                <button class="btn btn-error ms-3"
                     :class="{ 'opacity-25': leaveTeamForm.processing }"
                     :disabled="leaveTeamForm.processing"
                     @click="leaveTeam"
                 >
                     Leave
-                </DangerButton>
+                </button>
             </template>
         </ConfirmationModal>
 
@@ -365,18 +360,17 @@ const displayableRole = (role) => {
             </template>
 
             <template #footer>
-                <SecondaryButton @click="teamMemberBeingRemoved = null">
+                <button class="btn btn-secondary" @click="teamMemberBeingRemoved = null">
                     Cancel
-                </SecondaryButton>
+                </button>
 
-                <DangerButton
-                    class="ms-3"
+                <button class="btn btn-error ms-3"
                     :class="{ 'opacity-25': removeTeamMemberForm.processing }"
                     :disabled="removeTeamMemberForm.processing"
                     @click="removeTeamMember"
                 >
                     Remove
-                </DangerButton>
+                </button>
             </template>
         </ConfirmationModal>
     </div>

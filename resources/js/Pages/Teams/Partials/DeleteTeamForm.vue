@@ -3,8 +3,6 @@ import { ref } from 'vue';
 import { useForm } from '@inertiajs/vue3';
 import ActionSection from '@/Components/ActionSection.vue';
 import ConfirmationModal from '@/Components/ConfirmationModal.vue';
-import DangerButton from '@/Components/DangerButton.vue';
-import SecondaryButton from '@/Components/SecondaryButton.vue';
 
 const props = defineProps({
     team: Object,
@@ -40,9 +38,9 @@ const deleteTeam = () => {
             </div>
 
             <div class="mt-5">
-                <DangerButton @click="confirmTeamDeletion">
+                <button class="btn btn-error" @click="confirmTeamDeletion">
                     Delete Team
-                </DangerButton>
+                </button>
             </div>
 
             <!-- Delete Team Confirmation Modal -->
@@ -56,18 +54,17 @@ const deleteTeam = () => {
                 </template>
 
                 <template #footer>
-                    <SecondaryButton @click="confirmingTeamDeletion = false">
+                    <button class="btn btn-secondary" @click="confirmingTeamDeletion = false">
                         Cancel
-                    </SecondaryButton>
+                    </button>
 
-                    <DangerButton
-                        class="ms-3"
+                    <button class="btn btn-error ms-3"
                         :class="{ 'opacity-25': form.processing }"
                         :disabled="form.processing"
                         @click="deleteTeam"
                     >
                         Delete Team
-                    </DangerButton>
+                    </button>
                 </template>
             </ConfirmationModal>
         </template>

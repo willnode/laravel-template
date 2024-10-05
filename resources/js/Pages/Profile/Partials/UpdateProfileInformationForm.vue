@@ -5,9 +5,6 @@ import ActionMessage from '@/Components/ActionMessage.vue';
 import FormSection from '@/Components/FormSection.vue';
 import InputError from '@/Components/InputError.vue';
 import InputLabel from '@/Components/InputLabel.vue';
-import PrimaryButton from '@/Components/PrimaryButton.vue';
-import SecondaryButton from '@/Components/SecondaryButton.vue';
-import TextInput from '@/Components/TextInput.vue';
 
 const props = defineProps({
     user: Object,
@@ -112,18 +109,17 @@ const clearPhotoFileInput = () => {
                     />
                 </div>
 
-                <SecondaryButton class="mt-2 me-2" type="button" @click.prevent="selectNewPhoto">
+                <button class="btn btn-secondary mt-2 me-2" type="button" @click.prevent="selectNewPhoto">
                     Select A New Photo
-                </SecondaryButton>
+                </button>
 
-                <SecondaryButton
+                <button class="btn btn-secondary mt-2"
                     v-if="user.profile_photo_path"
                     type="button"
-                    class="mt-2"
                     @click.prevent="deletePhoto"
                 >
                     Remove Photo
-                </SecondaryButton>
+                </button>
 
                 <InputError :message="form.errors.photo" class="mt-2" />
             </div>
@@ -131,11 +127,11 @@ const clearPhotoFileInput = () => {
             <!-- Name -->
             <div class="col-span-6 sm:col-span-4">
                 <InputLabel for="name" value="Name" />
-                <TextInput
+                <input
                     id="name"
                     v-model="form.name"
                     type="text"
-                    class="mt-1 block w-full"
+                    class="input input-bordered mt-1 block w-full"
                     required
                     autocomplete="name"
                 />
@@ -145,11 +141,11 @@ const clearPhotoFileInput = () => {
             <!-- Email -->
             <div class="col-span-6 sm:col-span-4">
                 <InputLabel for="email" value="Email" />
-                <TextInput
+                <input
                     id="email"
                     v-model="form.email"
                     type="email"
-                    class="mt-1 block w-full"
+                    class="input input-bordered mt-1 block w-full"
                     required
                     autocomplete="username"
                 />
@@ -182,9 +178,9 @@ const clearPhotoFileInput = () => {
                 Saved.
             </ActionMessage>
 
-            <PrimaryButton :class="{ 'opacity-25': form.processing }" :disabled="form.processing">
+            <button class="btn btn-primary" :class="{ 'opacity-25': form.processing }" :disabled="form.processing">
                 Save
-            </PrimaryButton>
+            </button>
         </template>
     </FormSection>
 </template>
