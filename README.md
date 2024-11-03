@@ -21,5 +21,7 @@ The Laravel Jetstream has optional features that we also support:
 + Blog and Markdown Editor \*
 + Cart, Payments and PDF Export \*
 
+The optional features can be toggled in [jetstream.php](./config/jetstream.php)
+
 \* Custom and WIP.
 
